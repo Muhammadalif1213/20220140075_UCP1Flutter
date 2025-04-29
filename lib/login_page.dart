@@ -56,6 +56,12 @@ class _LoginPageState extends State<LoginPage> {
                           child: Icon(Icons.email),
                         ),
                       ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Email tidak boleh kosong';
+                        }
+                        return null;
+                      },
                     ),
                   ],
                 ),
@@ -73,7 +79,11 @@ class _LoginPageState extends State<LoginPage> {
                       obscureText: _obscureText,
                       decoration: InputDecoration(
                         suffixIcon: IconButton(
-                          icon: Icon(_obscureText ? Icons.visibility_off : Icons.visibility),
+                          icon: Icon(
+                            _obscureText
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                          ),
                           onPressed: () {
                             setState(() {
                               _obscureText = !_obscureText;
@@ -88,39 +98,52 @@ class _LoginPageState extends State<LoginPage> {
                           child: Icon(Icons.lock),
                         ),
                       ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Password tidak boleh kosong';
+                        }
+                        return null;
+                      },
                     ),
-                    const SizedBox(height: 70),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        minimumSize: const Size.fromHeight(50),
-                        foregroundColor: const Color.fromARGB(
-                          255,
-                          255,
-                          255,
-                          255,
-                        ),
-                        backgroundColor: const Color.fromARGB(255, 12, 56, 151),
-                      ),
-                      onPressed: () {},
-                      child: const Text('Masuk'),
+                  ],
+                ),
+                const SizedBox(height: 70),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    const SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('Belum memiliki akun? Silahkan'),
-                        Text.rich(
-                          TextSpan(
-                            text: ' Daftar disini?',
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 12, 56, 151),
-                            ),
+                    minimumSize: const Size.fromHeight(50),
+                    foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                    backgroundColor: const Color.fromARGB(255, 12, 56, 151),
+                  ),
+                  onPressed: () {
+                    if (_formkey.currentState!.validate()) {
+                      if (emailController.text == 'admin' &&
+                          passwordController.text == 'admin') {
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Email atau Password salah'),
                           ),
+                        );
+                      }
+                    }
+                  },
+                  child: const Text('Masuk'),
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Belum memiliki akun? Silahkan'),
+                    Text.rich(
+                      TextSpan(
+                        text: ' Daftar disini?',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 12, 56, 151),
                         ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
