@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -264,7 +265,13 @@ class _RegisterPageState extends State<RegisterPage> {
                     TextSpan(
                       text: ' Login disini!',
                       style: TextStyle(color: Color.fromARGB(255, 12, 56, 151)),
+                      recognizer:
+                          TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.pop(context);
+                            },
                     ),
+                    
                   ),
                 ],
               ),
