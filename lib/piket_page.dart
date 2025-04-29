@@ -127,7 +127,6 @@ class _PiketPageState extends State<PiketPage> {
                           'Pilih Tanggal',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        const SizedBox(height: 10),
                         const SizedBox(height: 20),
                         TextFormField(
                           controller: tanggalController,
@@ -144,6 +143,50 @@ class _PiketPageState extends State<PiketPage> {
                             ),
                           ),
                         ),
+                        const SizedBox(height: 20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Tugas Piket'),
+                        const SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: TextFormField(
+                                controller: tugasController,
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10,
+                                    horizontal: 15,
+                                  ),
+                                  hintText: 'Tugas Piket',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                backgroundColor: Colors.blueAccent,
+                                minimumSize: Size(180, 50),
+                              ),
+                              onPressed: addTask,
+                              child: Text(
+                                'Tambah',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                       ],
                     ),
                   ],
