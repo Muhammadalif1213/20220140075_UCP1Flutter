@@ -47,6 +47,15 @@ class _BrgPageState extends State<BrgPage> {
     }
   }
 
+  void calculateTotalPrice() {
+    int jumlahBarang = int.parse(jumlahBarangController.text);
+    int hargaSatuan = int.parse(hargaSatuanController.text);
+
+    setState(() {
+      totalHarga = jumlahBarang * hargaSatuan;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
