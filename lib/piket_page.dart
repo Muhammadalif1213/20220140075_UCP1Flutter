@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:ucp_1/detail_piket_page.dart';
 
 class PiketPage extends StatefulWidget {
   final String email;
@@ -226,6 +227,17 @@ class _PiketPageState extends State<PiketPage> {
                     final task = _tasks[index];
                     return GestureDetector(
                       onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) => DetailPiketPage(
+                                  email: task['email'],
+                                  tanggal: task['tanggal'],
+                                  tugas: task['tugas'],
+                                ),
+                          ),
+                        );
                       },
                       child: Container(
                         margin: const EdgeInsets.symmetric(vertical: 5),
