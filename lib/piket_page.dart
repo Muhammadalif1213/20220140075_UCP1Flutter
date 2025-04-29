@@ -18,6 +18,7 @@ class _PiketPageState extends State<PiketPage> {
   final piketKey = GlobalKey<FormState>();
 
   DateTime? _selectedDateTime;
+  final List<Map<String, dynamic>> _tasks = [];
 
   void pickDateTime() async {
     DateTime now = DateTime.now();
@@ -39,7 +40,6 @@ class _PiketPageState extends State<PiketPage> {
     }
   }
 
-  final List<Map<String, dynamic>> _tasks = [];
   void addTask() {
     if (piketKey.currentState!.validate()) {
       setState(() {
@@ -207,7 +207,50 @@ class _PiketPageState extends State<PiketPage> {
                         ),
                       ],
                     ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'Daftar Tugas Piket',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
                   ],
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: _tasks.length,
+                  itemBuilder: (context, index) {
+                    final task = _tasks[index];
+                    return GestureDetector(
+                      onTap: () {
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(vertical: 5),
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: Colors.blueAccent,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              task['tugas'],
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              color: Colors.white,
+                              size: 15,
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ],
