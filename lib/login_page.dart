@@ -80,6 +80,39 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 70),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        minimumSize: const Size.fromHeight(50),
+                        foregroundColor: const Color.fromARGB(
+                          255,
+                          255,
+                          255,
+                          255,
+                        ),
+                        backgroundColor: const Color.fromARGB(255, 12, 56, 151),
+                      ),
+                      onPressed: () {},
+                      child: const Text('Masuk'),
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('Belum memiliki akun? Silahkan'),
+                        Text.rich(
+                          TextSpan(
+                            text: ' Daftar disini?',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 12, 56, 151),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ],
