@@ -19,6 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Form(
+        key: _formkey,
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -53,6 +54,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Icon(Icons.person),
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Nama tidak boleh kosong';
+                      }
+                      return null;
+                    },
                   ),
                 ],
               ),
@@ -82,6 +89,12 @@ class _RegisterPageState extends State<RegisterPage> {
                               child: Icon(Icons.email),
                             ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Email tidak boleh kosong';
+                            }
+                            return null;
+                          },
                         ),
                       ],
                     ),
@@ -111,6 +124,12 @@ class _RegisterPageState extends State<RegisterPage> {
                               child: Icon(Icons.phone),
                             ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'No HP tidak boleh kosong';
+                            }
+                            return null;
+                          },
                         ),
                       ],
                     ),
@@ -144,6 +163,12 @@ class _RegisterPageState extends State<RegisterPage> {
                               child: Icon(Icons.lock),
                             ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Password tidak boleh kosong';
+                            }
+                            return null;
+                          },
                         ),
                       ],
                     ),
@@ -173,6 +198,15 @@ class _RegisterPageState extends State<RegisterPage> {
                               child: Icon(Icons.lock),
                             ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Konfirmasi password tidak boleh kosong';
+                            }
+                            if (value != _passwordController.text) {
+                              return 'Password tidak cocok';
+                            }
+                            return null;
+                          },
                         ),
                       ],
                     ),
