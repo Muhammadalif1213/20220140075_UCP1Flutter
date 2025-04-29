@@ -120,6 +120,83 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
+              const SizedBox(height: 40),
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        minimumSize: const Size.fromHeight(200),
+                        backgroundColor: Colors.blueAccent,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.cleaning_services, color: Colors.white, size: 50),
+                          const SizedBox(height: 5),
+                          Text(
+                            'Data Piket',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        minimumSize: const Size.fromHeight(200),
+                        backgroundColor: Colors.blueAccent,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.people_alt_rounded, color: Colors.white, size: 50),
+                          const SizedBox(height: 5),
+                          Text(
+                            'Data Pelanggan',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 10),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  minimumSize: Size(600, 150),
+                  backgroundColor: Colors.blueAccent,
+                ),
+                onPressed: () {
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.input_outlined, color: Colors.white, size: 50),
+                    const SizedBox(height: 5),
+                    Text(
+                      'Barang Masuk/Keluar',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
