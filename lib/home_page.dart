@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp_1/brg_page.dart';
 import 'package:ucp_1/cust_page.dart';
 import 'package:ucp_1/login_page.dart';
 import 'package:ucp_1/piket_page.dart';
@@ -84,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Colors.blue, 
+                          Colors.blue,
                           const Color.fromARGB(255, 12, 24, 185),
                         ],
                       ),
@@ -101,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image.asset('assets/images/mini.png' , width: 200),
+                      Image.asset('assets/images/mini.png', width: 200),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -114,10 +115,15 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           SizedBox(height: 10),
-                          ElevatedButton(onPressed: (){}, child: Text('Order Sekarang', style: TextStyle(fontSize: 12),))
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Order Sekarang',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ),
                         ],
                       ),
-                      
                     ],
                   ),
                 ],
@@ -146,7 +152,11 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.cleaning_services, color: Colors.white, size: 50),
+                          Icon(
+                            Icons.cleaning_services,
+                            color: Colors.white,
+                            size: 50,
+                          ),
                           const SizedBox(height: 5),
                           Text(
                             'Data Piket',
@@ -178,7 +188,11 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.people_alt_rounded, color: Colors.white, size: 50),
+                          Icon(
+                            Icons.people_alt_rounded,
+                            color: Colors.white,
+                            size: 50,
+                          ),
                           const SizedBox(height: 5),
                           Text(
                             'Data Pelanggan',
@@ -200,6 +214,12 @@ class _HomePageState extends State<HomePage> {
                   backgroundColor: Colors.blueAccent,
                 ),
                 onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BrgPage(email: widget.email),
+                    ),
+                  );
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
