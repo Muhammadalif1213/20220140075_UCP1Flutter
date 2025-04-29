@@ -116,6 +116,12 @@ class _PiketPageState extends State<PiketPage> {
                             hintText: 'Masukan Nama',
                             border: OutlineInputBorder(),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Nama tidak boleh kosong';
+                            }
+                            return null;
+                          },
                         ),
                       ],
                     ),
@@ -127,6 +133,7 @@ class _PiketPageState extends State<PiketPage> {
                           'Pilih Tanggal',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
+                        const SizedBox(height: 10),
                         const SizedBox(height: 20),
                         TextFormField(
                           controller: tanggalController,
@@ -142,8 +149,16 @@ class _PiketPageState extends State<PiketPage> {
                               child: Icon(Icons.calendar_today_outlined),
                             ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Tanggal tidak boleh kosong';
+                            }
+                            return null;
+                          },
                         ),
-                        const SizedBox(height: 20),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -166,6 +181,11 @@ class _PiketPageState extends State<PiketPage> {
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                 ),
+                                validator:
+                                    (value) =>
+                                        (value == null || value.isEmpty)
+                                            ? 'Tugas tidak boleh kosong'
+                                            : null,
                               ),
                             ),
                             const SizedBox(width: 10),
@@ -185,8 +205,6 @@ class _PiketPageState extends State<PiketPage> {
                             ),
                           ],
                         ),
-                      ],
-                    ),
                       ],
                     ),
                   ],
