@@ -15,16 +15,16 @@ class _BrgPageState extends State<BrgPage> {
   final TextEditingController hargaSatuanController = TextEditingController();
   int totalHarga = 0;
 
-  final List<String> jenisTransaksi = ['Barang Masuk', 'Barang Keluar'];
-
+  final String? prefixText = 'Rp. ';
+  String? transaksiValue;
+  String? barangValue;
   final List<Map<String, dynamic>> jenisBarang = [
     {'Barang': 'Carrier', 'HargaSatuan': 40000},
     {'Barang': 'Sleeping Bag', 'HargaSatuan': 10000},
     {'Barang': 'Tenda', 'HargaSatuan': 70000},
     {'Barang': 'Sepatu', 'HargaSatuan': 35000},
   ];
-  String? transaksiValue;
-  String? barangValue;
+  final List<String> jenisTransaksi = ['Barang Masuk', 'Barang Keluar'];
 
   DateTime? _selectedDateTime;
   void pickDateTime() async {
@@ -138,39 +138,41 @@ class _BrgPageState extends State<BrgPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 30),
-                    DropdownButtonFormField<String>(
-                      value: transaksiValue,
-                      decoration: InputDecoration(
-                        label: Text('Jenis Transaksi'),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        contentPadding: EdgeInsets.symmetric(
-                          vertical: 10,
-                          horizontal: 15,
-                        ),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Pilih jenis transaksi';
-                        }
-                        return null;
-                      },
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          transaksiValue = newValue;
-                        });
-                      },
-                      items:
-                          jenisTransaksi.map((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
+                  ],
+                ),
+                SizedBox(height: 30),
+                DropdownButtonFormField<String>(
+                  value: transaksiValue,
+                  decoration: InputDecoration(
+                    label: Text('Jenis Transaksi'),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    SizedBox(height: 30),
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 15,
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Pilih jenis transaksi';
+                    }
+                    return null;
+                  },
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      transaksiValue = newValue;
+                    });
+                  },
+                  items:
+                      jenisTransaksi.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                ),
+                SizedBox(height: 30),
                 DropdownButtonFormField<String>(
                   value: barangValue,
                   decoration: InputDecoration(
@@ -208,8 +210,82 @@ class _BrgPageState extends State<BrgPage> {
                         );
                       }).toList(),
                 ),
+                SizedBox(height: 30),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Jumlah Barang',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 10),
+                          TextFormField(
+                            controller: jumlahBarangController,
+                            keyboardType: TextInputType.number,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Jumlah barang tidak boleh kosong';
+                              }
+                              if (int.tryParse(value) == null ||
+                                  int.parse(value) <= 0) {
+                                return 'Masukkan angka yang valid (> 0)';
+                              }
+                              return null;
+                            },
+                            decoration: InputDecoration(
+                              hintText: 'Jumlah Barang',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 10,
+                                horizontal: 15,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Harga Satuan',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 10),
+                          TextFormField(
+                            controller: hargaSatuanController,
+                            readOnly: true,
+                            decoration: InputDecoration(
+                              hintText: 'Harga Satuan',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 10,
+                                horizontal: 15,
+                              ),
+                              prefixText: prefixText,
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Harga satuan tidak boleh kosong';
+                              }
+                              return null;
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
+                SizedBox(height: 30),
               ],
             ),
           ),
