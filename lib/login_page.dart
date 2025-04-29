@@ -15,7 +15,78 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      body: Form(
+        key: _formkey,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image(
+                  image: const AssetImage('assets/images/logo.png'),
+                  width: 100,
+                  height: 100,
+                ),
+                const Text(
+                  'SELAMAT DATANG KEMBALI',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                ),
+                const SizedBox(height: 20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Email',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    TextFormField(
+                      controller: emailController,
+                      decoration: InputDecoration(
+                        hintText: 'Email',
+                        border: OutlineInputBorder(),
+                        prefixIcon: Align(
+                          widthFactor: 1.0,
+                          heightFactor: 1.0,
+                          child: Icon(Icons.email),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Password',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 12),
+                    TextFormField(
+                      controller: passwordController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        border: OutlineInputBorder(),
+                        prefixIcon: Align(
+                          widthFactor: 1.0,
+                          heightFactor: 1.0,
+                          child: Icon(Icons.lock),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
