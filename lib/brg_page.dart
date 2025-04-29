@@ -170,6 +170,44 @@ class _BrgPageState extends State<BrgPage> {
                             );
                           }).toList(),
                     ),
+                    SizedBox(height: 30),
+                DropdownButtonFormField<String>(
+                  value: barangValue,
+                  decoration: InputDecoration(
+                    label: Text('Jenis Barang'),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 15,
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Pilih jenis barang';
+                    }
+                    return null;
+                  },
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      barangValue = newValue;
+                      final selectedBarang = jenisBarang.firstWhere(
+                        (element) => element['Barang'] == barangValue,
+                        orElse: () => {'Barang': '', 'HargaSatuan': 0},
+                      );
+                      hargaSatuanController.text =
+                          selectedBarang['HargaSatuan'].toString();
+                    });
+                  },
+                  items:
+                      jenisBarang.map((value) {
+                        return DropdownMenuItem<String>(
+                          value: value['Barang'],
+                          child: Text(value['Barang']),
+                        );
+                      }).toList(),
+                ),
                   ],
                 ),
               ],
