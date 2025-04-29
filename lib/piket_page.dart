@@ -17,7 +17,6 @@ class _PiketPageState extends State<PiketPage> {
   final TextEditingController tugasController = TextEditingController();
   final piketKey = GlobalKey<FormState>();
 
-
   DateTime? _selectedDateTime;
 
   void pickDateTime() async {
@@ -90,6 +89,40 @@ class _PiketPageState extends State<PiketPage> {
                 ),
               ),
             ),
+          ),
+        ),
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Form(
+                key: piketKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Nama Anggota',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 10),
+                        TextFormField(
+                          controller: namaController,
+                          decoration: const InputDecoration(
+                            hintText: 'Masukan Nama',
+                            border: OutlineInputBorder(),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),
