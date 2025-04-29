@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp_1/detail_cust_page.dart';
 
 class CustPage extends StatefulWidget {
   final String emailUsr;
@@ -254,6 +255,18 @@ class _CustPageState extends State<CustPage> {
                   ),
                   onPressed: () {
                     if (custKey.currentState!.validate()) {
+                      Navigator.push(context, 
+                        MaterialPageRoute(
+                        builder: (context) => DetailCustPage(
+                          emailUsr: widget.emailUsr,
+                          nama: namaController.text,
+                          email: emailController.text,
+                          noHp: noHpController.text,
+                          alamat: alamatController.text,
+                          provinsi: provinsiController.text,
+                          kodePos: kodaPosController.text,
+                        ),
+                      ));
                     }
                   },
                   child: const Text(
