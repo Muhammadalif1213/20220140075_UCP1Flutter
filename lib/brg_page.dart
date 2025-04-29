@@ -16,6 +16,15 @@ class _BrgPageState extends State<BrgPage> {
 
   final List<String> jenisTransaksi = ['Barang Masuk', 'Barang Keluar'];
 
+  final List<Map<String, dynamic>> jenisBarang = [
+    {'Barang': 'Carrier', 'HargaSatuan': 40000},
+    {'Barang': 'Sleeping Bag', 'HargaSatuan': 10000},
+    {'Barang': 'Tenda', 'HargaSatuan': 70000},
+    {'Barang': 'Sepatu', 'HargaSatuan': 35000},
+  ];
+  String? transaksiValue;
+  String? barangValue;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
