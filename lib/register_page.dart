@@ -14,6 +14,9 @@ class _RegisterPageState extends State<RegisterPage> {
   final _passwordController = TextEditingController();
   final _konfirmasiPasswordController = TextEditingController();
   final _formkey = GlobalKey<FormState>();
+  bool _obscureText = true;
+  bool _obscureText2 = true;
+
 
   @override
   Widget build(BuildContext context) {
@@ -153,8 +156,20 @@ class _RegisterPageState extends State<RegisterPage> {
                         const SizedBox(height: 12),
                         TextFormField(
                           controller: _passwordController,
-                          obscureText: true,
+                          obscureText: _obscureText,
                           decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _obscureText = !_obscureText;
+                                });
+                              },
+                              icon: Icon(
+                                _obscureText
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                              ),
+                            ),
                             hintText: 'Password',
                             border: OutlineInputBorder(),
                             prefixIcon: Align(
@@ -173,6 +188,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ],
                     ),
                   ),
+                  const SizedBox(width: 10),
 
                   Expanded(
                     child: Column(
@@ -188,8 +204,20 @@ class _RegisterPageState extends State<RegisterPage> {
                         const SizedBox(height: 12),
                         TextFormField(
                           controller: _konfirmasiPasswordController,
-                          obscureText: true,
+                          obscureText: _obscureText2,
                           decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _obscureText2 = !_obscureText2;
+                                });
+                              },
+                              icon: Icon(
+                                _obscureText2
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                              ),
+                            ),
                             hintText: 'Konfirmasi Password',
                             border: OutlineInputBorder(),
                             prefixIcon: Align(
