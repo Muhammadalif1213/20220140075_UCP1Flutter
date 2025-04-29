@@ -148,8 +148,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ],
                     ),
                   ),
-                  const SizedBox(width: 10),
-        
+
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,6 +175,33 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 70),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  minimumSize: Size.fromHeight(50),
+                  foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                  backgroundColor: const Color.fromARGB(255, 12, 56, 151),
+                ),
+                onPressed: () {
+                },
+                child: const Text('Daftar'),
+              ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Sudah memiliki akun? Silahkan'),
+                  Text.rich(
+                    TextSpan(
+                      text: ' Login disini!',
+                      style: TextStyle(color: Color.fromARGB(255, 12, 56, 151)),
                     ),
                   ),
                 ],
