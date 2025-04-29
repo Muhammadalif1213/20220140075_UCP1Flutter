@@ -138,6 +138,38 @@ class _BrgPageState extends State<BrgPage> {
                         ),
                       ),
                     ),
+                    SizedBox(height: 30),
+                    DropdownButtonFormField<String>(
+                      value: transaksiValue,
+                      decoration: InputDecoration(
+                        label: Text('Jenis Transaksi'),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 15,
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Pilih jenis transaksi';
+                        }
+                        return null;
+                      },
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          transaksiValue = newValue;
+                        });
+                      },
+                      items:
+                          jenisTransaksi.map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                    ),
                   ],
                 ),
               ],
