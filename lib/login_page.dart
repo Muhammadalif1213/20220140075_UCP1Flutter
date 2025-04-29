@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:ucp_1/home_page.dart';
 import 'package:ucp_1/register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -81,11 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                       obscureText: _obscureText,
                       decoration: InputDecoration(
                         suffixIcon: IconButton(
-                          icon: Icon(
-                            _obscureText
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                          ),
+                          icon: Icon(_obscureText ? Icons.visibility_off : Icons.visibility),
                           onPressed: () {
                             setState(() {
                               _obscureText = !_obscureText;
@@ -123,6 +120,14 @@ class _LoginPageState extends State<LoginPage> {
                     if (_formkey.currentState!.validate()) {
                       if (emailController.text == 'admin' &&
                           passwordController.text == 'admin') {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) =>
+                                    HomePage(email: emailController.text),
+                          ),
+                        );
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(

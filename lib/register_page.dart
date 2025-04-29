@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:ucp_1/home_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -17,7 +18,6 @@ class _RegisterPageState extends State<RegisterPage> {
   final _formkey = GlobalKey<FormState>();
   bool _obscureText = true;
   bool _obscureText2 = true;
-
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   const SizedBox(width: 10),
-        
+
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -253,6 +253,15 @@ class _RegisterPageState extends State<RegisterPage> {
                   backgroundColor: const Color.fromARGB(255, 12, 56, 151),
                 ),
                 onPressed: () {
+                  if (_formkey.currentState!.validate()) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (context) => HomePage(email: _emailController.text),
+                      ),
+                    );
+                  }
                 },
                 child: const Text('Daftar'),
               ),
@@ -271,7 +280,6 @@ class _RegisterPageState extends State<RegisterPage> {
                               Navigator.pop(context);
                             },
                     ),
-                    
                   ),
                 ],
               ),
