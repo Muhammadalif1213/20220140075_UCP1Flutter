@@ -9,6 +9,12 @@ class BrgPage extends StatefulWidget {
 }
 
 class _BrgPageState extends State<BrgPage> {
+  final TextEditingController tanggalController = TextEditingController();
+  final TextEditingController jumlahBarangController = TextEditingController();
+  final TextEditingController hargaSatuanController = TextEditingController();
+  int totalHarga = 0;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
