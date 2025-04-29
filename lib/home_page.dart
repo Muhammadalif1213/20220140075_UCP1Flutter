@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp_1/cust_page.dart';
 import 'package:ucp_1/login_page.dart';
 import 'package:ucp_1/piket_page.dart';
 
@@ -159,6 +160,13 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) => CustPage(emailUsr: widget.email),
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
