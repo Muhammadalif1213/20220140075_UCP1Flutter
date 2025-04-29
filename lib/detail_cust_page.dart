@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp_1/home_page.dart';
 
 class DetailCustPage extends StatefulWidget {
   final String emailUsr;
@@ -170,6 +171,13 @@ class _DetailCustPageState extends State<DetailCustPage> {
                   minimumSize: Size(600, 50),
                 ),
                 onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage(
+                      email: widget.emailUsr,
+                    )),
+                    (route) => false,
+                  );
                 },
                 child: const Text(
                   'Selesai',
