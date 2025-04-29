@@ -84,6 +84,12 @@ class _CustPageState extends State<CustPage> {
                           borderRadius: BorderRadius.circular(15.0),
                         ),
                       ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Nama tidak boleh kosong';
+                        }
+                        return null;
+                      },
                     ),
                   ],
                 ),
@@ -107,6 +113,12 @@ class _CustPageState extends State<CustPage> {
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
                             ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Email tidak boleh kosong';
+                              }
+                              return null;
+                            },
                           ),
                         ],
                       ),
@@ -129,6 +141,12 @@ class _CustPageState extends State<CustPage> {
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
                             ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'No HP tidak boleh kosong';
+                              }
+                              return null;
+                            },
                           ),
                         ],
                       ),
@@ -155,6 +173,12 @@ class _CustPageState extends State<CustPage> {
                           borderRadius: BorderRadius.circular(15.0),
                         ),
                       ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Alamat tidak boleh kosong';
+                        }
+                        return null;
+                      },
                     ),
                   ],
                 ),
@@ -178,6 +202,12 @@ class _CustPageState extends State<CustPage> {
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
                             ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Provisni tidak boleh kosong';
+                              }
+                              return null;
+                            },
                           ),
                         ],
                       ),
@@ -200,6 +230,12 @@ class _CustPageState extends State<CustPage> {
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
                             ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Koda Pos tidak boleh kosong';
+                              }
+                              return null;
+                            },
                           ),
                         ],
                       ),
@@ -217,6 +253,8 @@ class _CustPageState extends State<CustPage> {
                     minimumSize: Size(600, 50),
                   ),
                   onPressed: () {
+                    if (custKey.currentState!.validate()) {
+                    }
                   },
                   child: const Text(
                     'Simpan',
