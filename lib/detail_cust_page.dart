@@ -24,6 +24,15 @@ class DetailCustPage extends StatefulWidget {
 }
 
 class _DetailCustPageState extends State<DetailCustPage> {
+  late TextEditingController alamatController = TextEditingController(
+    text: widget.alamat,
+  );
+  late TextEditingController provinsiController = TextEditingController(
+    text: widget.provinsi,
+  );
+  late TextEditingController kodePosController = TextEditingController(
+    text: widget.kodePos,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +101,7 @@ class _DetailCustPageState extends State<DetailCustPage> {
                   ),
                   const SizedBox(height: 12),
                   TextFormField(
+                    controller: alamatController,
                     decoration: InputDecoration(
                       hintText: 'Alamat',
                       border: OutlineInputBorder(
@@ -114,6 +124,7 @@ class _DetailCustPageState extends State<DetailCustPage> {
                         ),
                         const SizedBox(height: 12),
                         TextFormField(
+                          controller: provinsiController,
                           decoration: InputDecoration(
                             hintText: 'Provisni',
                             border: OutlineInputBorder(
@@ -135,6 +146,7 @@ class _DetailCustPageState extends State<DetailCustPage> {
                         ),
                         const SizedBox(height: 12),
                         TextFormField(
+                          controller: kodePosController,
                           decoration: InputDecoration(
                             hintText: 'Kode Pos',
                             border: OutlineInputBorder(
