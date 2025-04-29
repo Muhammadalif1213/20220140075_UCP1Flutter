@@ -40,6 +40,21 @@ class _PiketPageState extends State<PiketPage> {
     }
   }
 
+  final List<Map<String, dynamic>> _tasks = [];
+  void addTask() {
+    if (piketKey.currentState!.validate()) {
+      setState(() {
+        _tasks.add({
+          'tugas': tugasController.text,
+          'tanggal': tanggalController.text,
+          'email': widget.email,
+        });
+        tanggalController.clear();
+        tugasController.clear();
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
