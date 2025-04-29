@@ -14,6 +14,7 @@ class _BrgPageState extends State<BrgPage> {
   final TextEditingController hargaSatuanController = TextEditingController();
   int totalHarga = 0;
 
+  final List<String> jenisTransaksi = ['Barang Masuk', 'Barang Keluar'];
 
   @override
   Widget build(BuildContext context) {
