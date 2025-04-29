@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:ucp_1/detail_brg_page.dart';
 
 class BrgPage extends StatefulWidget {
   final String email;
@@ -286,6 +287,45 @@ class _BrgPageState extends State<BrgPage> {
                   ],
                 ),
                 SizedBox(height: 30),
+                ElevatedButton(
+                  onPressed: () {
+                    if (valKey.currentState!.validate()) {
+                      calculateTotalPrice();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder:
+                              (context) => DetailBrgPage(
+                                email: widget.email,
+                                jumlahBarang: jumlahBarangController.text,
+                                tanggal: tanggalController.text,
+                                jenisTransaksi: transaksiValue.toString(),
+                                jenisBarang: barangValue.toString(),
+                                hargaSatuan: hargaSatuanController.text,
+                                totalHarga: totalHarga,
+                              ),
+                        ),
+                      );
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 15),
+                    backgroundColor: Colors.blueAccent,
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Submit',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
