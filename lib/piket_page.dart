@@ -119,6 +119,33 @@ class _PiketPageState extends State<PiketPage> {
                         ),
                       ],
                     ),
+                    const SizedBox(height: 20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Pilih Tanggal',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 10),
+                        const SizedBox(height: 20),
+                        TextFormField(
+                          controller: tanggalController,
+                          onTap: () {
+                            pickDateTime();
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'Pilih Tanggal',
+                            border: OutlineInputBorder(),
+                            prefixIcon: Align(
+                              widthFactor: 1.0,
+                              heightFactor: 1.0,
+                              child: Icon(Icons.calendar_today_outlined),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
